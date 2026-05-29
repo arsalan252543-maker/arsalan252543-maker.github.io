@@ -1,434 +1,428 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>arsalan.editz | 30-60s Reels & Shorts Specialist</title>
-  <meta name="description" content="arsalan.editz - Expert in 30-60 Second Viral Reels, YouTube Shorts, 3D Shorts. Fast 12hr delivery.">
+  <title>arsalan.editz | 30-60s Reels Specialist</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
     
     * {margin:0; padding:0; box-sizing:border-box;}
-    html {scroll-behavior:smooth;}
     body {
-      background:#030303;
+      background:#0a0a0f;
       color:#fff;
-      font-family:'Poppins', sans-serif;
+      font-family:'Space Grotesk', sans-serif;
       overflow-x:hidden;
     }
-    #canvas-bg {
+    
+   .bg-anim {
       position:fixed;
       top:0; left:0;
       width:100%; height:100%;
       z-index:0;
+      background:linear-gradient(-45deg, #0a0a0f, #1a0a2e, #16213e, #0f3460);
+      background-size:400% 400%;
+      animation:gradientBG 15s ease infinite;
     }
-
-  /* Side Character Mascot */
-.side-character {
-      position:fixed;
-      bottom:20px;
-      right:20px;
-      width:180px;
-      height:250px;
-      z-index:999;
-      pointer-events:none;
-      animation:characterFloat 4s ease-in-out infinite;
-      filter:drop-shadow(0 0 25px rgba(255,60,0,0.8));
-    }
-    
-    @keyframes characterFloat {
-      0%, 100% {transform:translateY(0px) rotate(2deg);}
-      50% {transform:translateY(-15px) rotate(-2deg);}
-    }
-
-.side-character img {
-      width:100%;
-      height:100%;
-      object-fit:contain;
-    }
-
-.container {max-width:1400px; margin:auto; padding:20px; position:relative; z-index:2;}
-    header {
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      position:relative;
-      perspective:1000px;
-    }
-.hero-3d {
-      transform-style:preserve-3d;
-      animation:float 6s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% {transform:translateY(0px) rotateX(5deg) rotateY(-5deg);}
-      50% {transform:translateY(-20px) rotateX(-5deg) rotateY(5deg);}
-    }
-    h1 {
-      font-family:'Orbitron', sans-serif;
-      font-size:5.5rem;
-      font-weight:900;
-      background:linear-gradient(45deg, #ff3c00, #ff9500, #ff3c00);
-      background-size:200% 200%;
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      animation:gradient 3s ease infinite;
-      text-shadow:0 0 40px rgba(255,60,0,0.8);
-      letter-spacing:3px;
-      transform:translateZ(50px);
-    }
-    @keyframes gradient {
+    @keyframes gradientBG {
       0% {background-position:0% 50%;}
       50% {background-position:100% 50%;}
       100% {background-position:0% 50%;}
     }
-.subtitle {
-      font-size:1.4rem;
-      margin:25px 0;
-      opacity:0.9;
-      font-weight:300;
-      letter-spacing:2px;
-      transform:translateZ(30px);
+    
+   .orb {
+      position:fixed;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:0.4;
+      animation:float 20s infinite ease-in-out;
+      z-index:1;
     }
-.specialty-badge {
-      display:inline-block;
-      background:rgba(255,60,0,0.15);
-      border:2px solid #ff3c00;
-      padding:12px 30px;
-      border-radius:50px;
-      margin:20px 0;
-      font-family:'Orbitron', sans-serif;
-      font-weight:700;
-      font-size:1.1rem;
-      box-shadow:0 0 30px rgba(255,60,0,0.4);
-      transform:translateZ(35px);
+   .orb1 {
+      width:300px; height:300px;
+      background:#ff006e;
+      top:-100px; left:-100px;
     }
-.btn {
-      display:inline-block;
-      background:linear-gradient(135deg, #ff3c00, #ff6b00);
-      color:#fff;
-      padding:18px 50px;
-      text-decoration:none;
-      border-radius:50px;
-      margin-top:30px;
-      font-weight:700;
-      font-size:1.2rem;
-      font-family:'Orbitron', sans-serif;
-      box-shadow:0 0 30px #ff3c00, 0 0 60px rgba(255,60,0,0.3), inset 0 0 20px rgba(255,255,255,0.1);
-      border:1px solid rgba(255,60,0,0.5);
-      transition:0.4s;
-      transform:translateZ(40px);
-      letter-spacing:1px;
+   .orb2 {
+      width:250px; height:250px;
+      background:#3a86ff;
+      bottom:-100px; right:-100px;
+      animation-delay:5s;
     }
-.btn:hover {
-      transform:translateZ(40px) scale(1.1) translateY(-5px);
-      box-shadow:0 0 50px #ff3c00, 0 0 100px rgba(255,60,0,0.5), inset 0 0 30px rgba(255,255,255,0.2);
+    @keyframes float {
+      0%, 100% {transform:translate(0,0) scale(1);}
+      33% {transform:translate(50px,50px) scale(1.1);}
+      66% {transform:translate(-30px,80px) scale(0.9);}
     }
-    h2 {
-      font-family:'Orbitron', sans-serif;
-      font-size:3rem;
-      margin:100px 0 40px;
-      text-align:center;
-      background:linear-gradient(90deg, #ff3c00, #fff, #ff3c00);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    
+   .container {
       position:relative;
+      z-index:2;
+      padding:20px;
+      max-width:500px;
+      margin:auto;
     }
-    h2::after {
-      content:'';
-      display:block;
-      width:100px;
-      height:4px;
-      background:linear-gradient(90deg, transparent, #ff3c00, transparent);
-      margin:20px auto 0;
-    }
-.grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
-      gap:40px;
-      margin-top:40px;
-    }
-.card {
-      background:rgba(15,15,15,0.6);
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid rgba(255,60,0,0.2);
-      backdrop-filter:blur(20px);
-      transition:0.5s;
-      transform-style:preserve-3d;
-      position:relative;
-    }
-.card::before {
-      content:'';
-      position:absolute;
-      top:0; left:0; right:0; bottom:0;
-      background:linear-gradient(135deg, rgba(255,60,0,0.1), transparent);
-      opacity:0;
-      transition:0.5s;
-    }
-.card:hover {
-      transform:translateY(-20px) rotateX(5deg) rotateY(-5deg) translateZ(20px);
-      box-shadow:0 40px 80px rgba(255,60,0,0.4), 0 0 0 1px #ff3c00;
-    }
-.card:hover::before {opacity:1;}
-.card iframe {width:100%; height:250px; object-fit:cover;}
-.card-content {padding:30px;}
-.tag {
-      background:linear-gradient(135deg, #ff3c00, #ff6b00);
-      color:#fff;
-      padding:8px 18px;
-      border-radius:25px;
-      font-size:0.9rem;
-      display:inline-block;
-      margin-bottom:15px;
-      font-weight:700;
-      font-family:'Orbitron', sans-serif;
-      box-shadow:0 0 20px rgba(255,60,0,0.5);
-    }
-.card h3 {font-size:1.5rem; margin:10px 0; font-weight:600;}
-.price {
-      font-size:2.2rem; 
-      font-family:'Orbitron', sans-serif;
-      background:linear-gradient(45deg, #ff3c00, #ff9500);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      font-weight:900; 
-      margin:15px 0;
-    }
-.stats {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:30px;
-      margin:80px 0;
-    }
-.stat {
+    
+   .hero {
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
       text-align:center;
       padding:40px 20px;
-      background:rgba(15,15,15,0.6);
-      border-radius:20px;
-      border:1px solid rgba(255,60,0,0.2);
-      backdrop-filter:blur(15px);
-      transform-style:preserve-3d;
-      transition:0.4s;
     }
-.stat:hover {transform:translateY(-10px) translateZ(20px);}
-.stat-num {
-      font-size:3.5rem;
-      font-family:'Orbitron', sans-serif;
-      font-weight:900;
-      background:linear-gradient(45deg, #ff3c00, #ff9500);
+    
+   .badge {
+      background:rgba(255,255,255,0.1);
+      backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.2);
+      padding:8px 20px;
+      border-radius:100px;
+      font-size:0.75rem;
+      font-weight:600;
+      letter-spacing:1px;
+      margin-bottom:25px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.3);
+    }
+    
+    h1 {
+      font-size:3.2rem;
+      font-weight:700;
+      line-height:1.1;
+      margin-bottom:15px;
+      background:linear-gradient(135deg, #fff 0%, #a8a8ff 100%);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
+    
+   .gradient-text {
+      background:linear-gradient(135deg, #ff006e 0%, #3a86ff 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    
+   .subtitle {
+      font-size:1rem;
+      opacity:0.8;
+      margin-bottom:30px;
+      line-height:1.6;
+      font-weight:400;
+    }
+    
+   .stats {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px;
+      width:100%;
+      margin:30px 0;
+    }
+   .stat-box {
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:16px;
+      padding:20px 10px;
+      text-align:center;
+    }
+   .stat-num {
+      font-size:1.8rem;
+      font-weight:700;
+      background:linear-gradient(135deg, #ff006e, #3a86ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:5px;
+    }
+   .stat-label {
+      font-size:0.7rem;
+      opacity:0.7;
+      font-weight:500;
+    }
+    
+   .btn {
+      width:100%;
+      background:linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+      color:#fff;
+      padding:18px;
+      text-decoration:none;
+      border-radius:16px;
+      font-weight:600;
+      font-size:1.1rem;
+      display:block;
+      text-align:center;
+      box-shadow:0 10px 40px rgba(255,0,110,0.4);
+      border:none;
+      margin:20px 0;
+      transition:0.3s;
+    }
+   .btn:active {transform:scale(0.95);}
+    
+   .section {margin:60px 0;}
+    h2 {
+      font-size:2rem;
+      font-weight:700;
+      margin-bottom:25px;
+      text-align:center;
+    }
+    
+   .card {
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:20px;
+      padding:25px;
+      margin-bottom:20px;
+      transition:0.3s;
+    }
+   .card:active {
+      transform:scale(0.98);
+      background:rgba(255,255,255,0.08);
+    }
+    
+   .tag {
+      background:linear-gradient(135deg, #ff006e, #3a86ff);
+      color:#fff;
+      padding:6px 14px;
+      border-radius:100px;
+      font-size:0.7rem;
+      font-weight:600;
+      display:inline-block;
+      margin-bottom:12px;
+    }
+    
+   .card h3 {
+      font-size:1.3rem;
+      margin-bottom:8px;
+      font-weight:600;
+    }
+    
+   .card p {
+      opacity:0.7;
+      font-size:0.9rem;
+      line-height:1.5;
+      margin-bottom:15px;
+    }
+    
+   .price {
+      font-size:1.8rem;
+      font-weight:700;
+      background:linear-gradient(135deg, #ff006e, #3a86ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    
+   .sticky-wa {
+      position:fixed;
+      bottom:20px;
+      left:20px;
+      right:20px;
+      z-index:999;
+      background:linear-gradient(135deg, #25D366, #128C7E);
+      color:#fff;
+      padding:16px;
+      border-radius:16px;
+      text-align:center;
+      text-decoration:none;
+      font-weight:600;
+      font-size:1rem;
+      box-shadow:0 10px 40px rgba(37,211,102,0.5);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    
+    /* Mascot + Speech Bubble */
+   .mascot-wrapper {
+      position:fixed;
+      bottom:90px;
+      right:15px;
+      z-index:998;
+    }
+   .mascot {
+      width:100px;
+      height:140px;
+      pointer-events:none;
+      animation:mascotBounce 3s ease-in-out infinite;
+      filter:drop-shadow(0 0 20px rgba(255,0,110,0.6));
+    }
+    @keyframes mascotBounce {
+      0%, 100% {transform:translateY(0px) rotate(3deg);}
+      50% {transform:translateY(-10px) rotate(-3deg);}
+    }
+   .mascot img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+    
+   .speech-bubble {
+      position:absolute;
+      bottom:150px;
+      right:0;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(20px);
+      color:#0a0a0f;
+      padding:15px 18px;
+      border-radius:18px 18px 4px 18px;
+      font-size:0.85rem;
+      font-weight:600;
+      max-width:220px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.3);
+      opacity:0;
+      transform:scale(0.8) translateY(10px);
+      transition:0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      cursor:pointer;
+      border:2px solid #ff006e;
+    }
+   .speech-bubble.show {
+      opacity:1;
+      transform:scale(1) translateY(0);
+    }
+   .speech-bubble::after {
+      content:'';
+      position:absolute;
+      bottom:-8px;
+      right:20px;
+      width:0;
+      height:0;
+      border-left:8px solid transparent;
+      border-right:8px solid transparent;
+      border-top:8px solid rgba(255,255,255,0.95);
+    }
+   .speech-bubble:active {
+      transform:scale(0.95);
+    }
+    
     footer {
       text-align:center;
-      padding:100px 20px;
-      background:rgba(5,5,5,0.8);
-      margin-top:120px;
-      border-top:1px solid rgba(255,60,0,0.3);
-      backdrop-filter:blur(20px);
-    }
-    @media(max-width:768px){
-      h1{font-size:3rem;}
-      h2{font-size:2.2rem;}
-.grid{grid-template-columns:1fr;}
-.side-character{width:120px; height:170px; bottom:10px; right:10px;}
+      padding:40px 20px 120px;
+      opacity:0.5;
+      font-size:0.8rem;
     }
   </style>
 </head>
 <body>
 
-<canvas id="canvas-bg"></canvas>
+<div class="bg-anim"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
-<!-- Side Mascot Character -->
-<div class="side-character">
-  <img src="character.png" alt="arsalan.editz mascot">
-</div>
-
-<header>
-  <div class="hero-3d">
-    <h1>arsalan.editz</h1>
-    <div class="specialty-badge">⚡ 30-60 SECOND SPECIALIST ⚡</div>
-    <p class="subtitle">VIRAL REELS | YOUTUBE SHORTS | 3D SHORTS | FAST DELIVERY</p>
-    <a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20want%2030-60s%20reel%20edit" class="btn">BOOK REEL NOW</a>
+<div class="mascot-wrapper">
+  <div class="speech-bubble" id="speechBubble">
+    Hey! 👋 Kis type ka video edit karana hai?
   </div>
-</header>
+  <div class="mascot">
+    <img src="character.png" alt="mascot">
+  </div>
+</div>
 
 <div class="container">
+  
+  <div class="hero">
+    <div class="badge">⚡ 30-60 SECOND EXPERT</div>
+    <h1>arsalan<span class="gradient-text">.editz</span></h1>
+    <p class="subtitle">Viral Reels & YouTube Shorts Editor<br>12hr Fast Delivery Guaranteed</p>
+    
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-num">1K+</div>
+        <div class="stat-label">REELS</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">12HR</div>
+        <div class="stat-label">DELIVERY</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">5M+</div>
+        <div class="stat-label">VIEWS</div>
+      </div>
+    </div>
+    
+    <a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20need%2030-60s%20reel" class="btn">🚀 START MY REEL</a>
+  </div>
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num">1000+</div>
-      <p>Reels Delivered</p>
+  <div class="section">
+    <h2>30-60s Packages</h2>
+    
+    <div class="card">
+      <span class="tag">30 SEC REEL</span>
+      <h3>Basic Viral Pack</h3>
+      <p>Hook + Auto Captions + Trending Audio + Color Grade + 1 Revision</p>
+      <div class="price">₹299</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">30-60s</div>
-      <p>Only Short Form</p>
+    
+    <div class="card">
+      <span class="tag">60 SEC SHORT</span>
+      <h3>Pro Motion Pack</h3>
+      <p>3D Text + Motion Graphics + Beat Sync + VFX + SFX + 2 Revisions</p>
+      <div class="price">₹499</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">12HR</div>
-      <p>Avg Delivery</p>
-    </div>
-    <div class="stat">
-      <div class="stat-num">5M+</div>
-      <p>Total Views</p>
+    
+    <div class="card">
+      <span class="tag">3D SHORT</span>
+      <h3>Blender VFX Pack</h3>
+      <p>3D Animation + Particle FX + Logo Reveal + Sound Design + 3 Revisions</p>
+      <div class="price">₹999</div>
     </div>
   </div>
 
-  <h2>30-60s VIRAL SHOWREEL</h2>
-  <iframe width="100%" height="600" style="border-radius:24px; border:1px solid rgba(255,60,0,0.3);" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-
-  <h2>REELS & SHORTS PORTFOLIO</h2>
-  <div class="grid">
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-      <div class="card-content">
-        <span class="tag">30s REEL</span>
-        <h3>Hook + Transition Reel</h3>
-        <p>3s Killer Hook + Fast Cuts + Motion Text + Trending Audio - 30 Seconds</p>
-      </div>
-    </div>
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-      <div class="card-content">
-        <span class="tag">60s SHORT</span>
-        <h3>Storytelling Short</h3>
-        <p>Auto Captions + Beat Sync + Zoom Punch + SFX + Color - 60 Seconds</p>
-      </div>
-    </div>
-  </div>
-
-  <h2>3D SHORTS SPECIAL</h2>
-  <div class="grid">
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-      <div class="card-content">
-        <span class="tag">3D SHORT</span>
-        <h3>Gaming 3D Intro</h3>
-        <p>Blender 3D + Neon Glow + Particles + Logo Reveal - 45 Seconds</p>
-      </div>
-    </div>
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-      <div class="card-content">
-        <span class="tag">VFX REEL</span>
-        <h3>Product 3D Reveal</h3>
-        <p>Element 3D + Motion Graphics + Sound Design - 50 Seconds</p>
-      </div>
-    </div>
-  </div>
-
-  <h2>30-60s PACKAGES</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="card-content">
-        <h3>Basic Reel - 30s</h3>
-        <p class="price">₹299</p>
-        <p>Hook + Captions + SFX + Color Grade + 1 Revision + 24hr Delivery</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-content">
-        <h3>Pro Short - 60s</h3>
-        <p class="price">₹499</p>
-        <p>3D Text + Motion Graphics + Beat Sync + VFX + 2 Revisions + 12hr</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-content">
-        <h3>3D Viral Pack</h3>
-        <p class="price">₹999</p>
-        <p>Blender 3D + Particle FX + Advanced VFX + Sound Design + 3 Revisions</p>
-      </div>
-    </div>
-  </div>
-
+  <footer>
+    © 2026 arsalan.editz | Only 30-60s Content
+  </footer>
+  
 </div>
 
-<footer>
-  <p style="font-size:1.3rem; font-family:'Orbitron',sans-serif;">© 2026 arsalan.editz | 30-60s REELS SPECIALIST</p>
-  <p style="margin:20px 0; opacity:0.7;">I Only Edit 30-60 Second Viral Content. Nothing More, Nothing Less.</p>
-  <a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20need%2030-60s%20reel%20edit" class="btn">START YOUR REEL</a>
-</footer>
+<a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20want%20reel%20edit" class="sticky-wa">
+  💬 WhatsApp Pe Order Karo
+</a>
 
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-  }
-}
-</script>
-
-<script type="module">
-  import * as THREE from 'three';
+<script>
+  // Speech bubble logic
+  const bubble = document.getElementById('speechBubble');
+  const messages = [
+    "Hey! 👋 Kis type ka video edit karana hai?",
+    "Reel banwana hai ya Short? 🎬",
+    "30 sec ya 60 sec? Batao na 😊",
+    "3D VFX chahiye kya? ✨"
+  ];
+  let msgIndex = 0;
   
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({
-    canvas: document.getElementById('canvas-bg'),
-    alpha: true,
-    antialias: true
-  });
+  // Show first message after 3 seconds
+  setTimeout(() => {
+    bubble.classList.add('show');
+    typeWriter(messages[0]);
+  }, 3000);
   
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // Change message every 8 seconds
+  setInterval(() => {
+    msgIndex = (msgIndex + 1) % messages.length;
+    bubble.classList.remove('show');
+    setTimeout(() => {
+      bubble.classList.add('show');
+      typeWriter(messages[msgIndex]);
+    }, 400);
+  }, 8000);
   
-  const particlesGeometry = new THREE.BufferGeometry();
-  const count = 3000;
-  const positions = new Float32Array(count * 3);
-  
-  for(let i = 0; i < count * 3; i++) {
-    positions[i] = (Math.random() - 0.5) * 20;
-  }
-  
-  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.02,
-    color: 0xff3c00,
-    transparent: true,
-    opacity: 0.8,
-    blending: THREE.AdditiveBlending
-  });
-  
-  const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-  scene.add(particles);
-  
-  const torus = new THREE.Mesh(
-    new THREE.TorusGeometry(2, 0.5, 16, 100),
-    new THREE.MeshBasicMaterial({color: 0xff3c00, wireframe: true, transparent: true, opacity: 0.3})
-  );
-  torus.position.set(5, 0, -5);
-  scene.add(torus);
-  
-  const icosahedron = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(1.5, 0),
-    new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, transparent: true, opacity: 0.3})
-  );
-  icosahedron.position.set(-5, 2, -3);
-  scene.add(icosahedron);
-  
-  camera.position.z = 5;
-  
-  function animate() {
-    requestAnimationFrame(animate);
-    particles.rotation.y += 0.0005;
-    particles.rotation.x += 0.0002;
-    torus.rotation.x += 0.01;
-    torus.rotation.y += 0.005;
-    icosahedron.rotation.x += 0.008;
-    icosahedron.rotation.y += 0.01;
-    renderer.render(scene, camera);
+  // Typewriter effect
+  function typeWriter(text) {
+    bubble.textContent = '';
+    let i = 0;
+    const typing = setInterval(() => {
+      if (i < text.length) {
+        bubble.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(typing);
+      }
+    }, 40);
   }
   
-  animate();
-  
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+  // Click bubble to open WhatsApp
+  bubble.addEventListener('click', () => {
+    window.open('https://wa.me/918928822744?text=Hi%20Arsalan,%20Mascot%20ne%20poocha%20tha%20-%20mujhe%20reel%20edit%20karani%20hai', '_blank');
   });
 </script>
 
 </body>
-</html>
+        </html>
