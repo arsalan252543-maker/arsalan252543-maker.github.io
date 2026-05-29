@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>arsalan.editz | 30-60s Reels & Shorts Specialist</title>
+  <meta name="description" content="arsalan.editz - Expert in 30-60 Second Viral Reels, YouTube Shorts, 3D Shorts. Fast 12hr delivery.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap');
+    
+    * {margin:0; padding:0; box-sizing:border-box;}
+    html {scroll-behavior:smooth;}
+    body {
+      background:#030303;
+      color:#fff;
+      font-family:'Poppins', sans-serif;
+      overflow-x:hidden;
+    }
+    #canvas-bg {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index:0;
+    }
+
+  /* Side Character Mascot */
+.side-character {
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      width:180px;
+      height:250px;
+      z-index:999;
+      pointer-events:none;
+      animation:characterFloat 4s ease-in-out infinite;
+      filter:drop-shadow(0 0 25px rgba(255,60,0,0.8));
+    }
+    
+    @keyframes characterFloat {
+      0%, 100% {transform:translateY(0px) rotate(2deg);}
+      50% {transform:translateY(-15px) rotate(-2deg);}
+    }
+
+.side-character img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+.container {max-width:1400px; margin:auto; padding:20px; position:relative; z-index:2;}
+    header {
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      perspective:1000px;
+    }
+.hero-3d {
+      transform-style:preserve-3d;
+      animation:float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% {transform:translateY(0px) rotateX(5deg) rotateY(-5deg);}
+      50% {transform:translateY(-20px) rotateX(-5deg) rotateY(5deg);}
+    }
+    h1 {
+      font-family:'Orbitron', sans-serif;
+      font-size:5.5rem;
+      font-weight:900;
+      background:linear-gradient(45deg, #ff3c00, #ff9500, #ff3c00);
+      background-size:200% 200%;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:gradient 3s ease infinite;
+      text-shadow:0 0 40px rgba(255,60,0,0.8);
+      letter-spacing:3px;
+      transform:translateZ(50px);
+    }
+    @keyframes gradient {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
+    }
+.subtitle {
+      font-size:1.4rem;
+      margin:25px 0;
+      opacity:0.9;
+      font-weight:300;
+      letter-spacing:2px;
+      transform:translateZ(30px);
+    }
+.specialty-badge {
+      display:inline-block;
+      background:rgba(255,60,0,0.15);
+      border:2px solid #ff3c00;
+      padding:12px 30px;
+      border-radius:50px;
+      margin:20px 0;
+      font-family:'Orbitron', sans-serif;
+      font-weight:700;
+      font-size:1.1rem;
+      box-shadow:0 0 30px rgba(255,60,0,0.4);
+      transform:translateZ(35px);
+    }
+.btn {
+      display:inline-block;
+      background:linear-gradient(135deg, #ff3c00, #ff6b00);
+      color:#fff;
+      padding:18px 50px;
+      text-decoration:none;
+      border-radius:50px;
+      margin-top:30px;
+      font-weight:700;
+      font-size:1.2rem;
+      font-family:'Orbitron', sans-serif;
+      box-shadow:0 0 30px #ff3c00, 0 0 60px rgba(255,60,0,0.3), inset 0 0 20px rgba(255,255,255,0.1);
+      border:1px solid rgba(255,60,0,0.5);
+      transition:0.4s;
+      transform:translateZ(40px);
+      letter-spacing:1px;
+    }
+.btn:hover {
+      transform:translateZ(40px) scale(1.1) translateY(-5px);
+      box-shadow:0 0 50px #ff3c00, 0 0 100px rgba(255,60,0,0.5), inset 0 0 30px rgba(255,255,255,0.2);
+    }
+    h2 {
+      font-family:'Orbitron', sans-serif;
+      font-size:3rem;
+      margin:100px 0 40px;
+      text-align:center;
+      background:linear-gradient(90deg, #ff3c00, #fff, #ff3c00);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      position:relative;
+    }
+    h2::after {
+      content:'';
+      display:block;
+      width:100px;
+      height:4px;
+      background:linear-gradient(90deg, transparent, #ff3c00, transparent);
+      margin:20px auto 0;
+    }
+.grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+      gap:40px;
+      margin-top:40px;
+    }
+.card {
+      background:rgba(15,15,15,0.6);
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid rgba(255,60,0,0.2);
+      backdrop-filter:blur(20px);
+      transition:0.5s;
+      transform-style:preserve-3d;
+      position:relative;
+    }
+.card::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0; bottom:0;
+      background:linear-gradient(135deg, rgba(255,60,0,0.1), transparent);
+      opacity:0;
+      transition:0.5s;
+    }
+.card:hover {
+      transform:translateY(-20px) rotateX(5deg) rotateY(-5deg) translateZ(20px);
+      box-shadow:0 40px 80px rgba(255,60,0,0.4), 0 0 0 1px #ff3c00;
+    }
+.card:hover::before {opacity:1;}
+.card iframe {width:100%; height:250px; object-fit:cover;}
+.card-content {padding:30px;}
+.tag {
+      background:linear-gradient(135deg, #ff3c00, #ff6b00);
+      color:#fff;
+      padding:8px 18px;
+      border-radius:25px;
+      font-size:0.9rem;
+      display:inline-block;
+      margin-bottom:15px;
+      font-weight:700;
+      font-family:'Orbitron', sans-serif;
+      box-shadow:0 0 20px rgba(255,60,0,0.5);
+    }
+.card h3 {font-size:1.5rem; margin:10px 0; font-weight:600;}
+.price {
+      font-size:2.2rem; 
+      font-family:'Orbitron', sans-serif;
+      background:linear-gradient(45deg, #ff3c00, #ff9500);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      font-weight:900; 
+      margin:15px 0;
+    }
+.stats {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:30px;
+      margin:80px 0;
+    }
+.stat {
+      text-align:center;
+      padding:40px 20px;
+      background:rgba(15,15,15,0.6);
+      border-radius:20px;
+      border:1px solid rgba(255,60,0,0.2);
+      backdrop-filter:blur(15px);
+      transform-style:preserve-3d;
+      transition:0.4s;
+    }
+.stat:hover {transform:translateY(-10px) translateZ(20px);}
+.stat-num {
+      font-size:3.5rem;
+      font-family:'Orbitron', sans-serif;
+      font-weight:900;
+      background:linear-gradient(45deg, #ff3c00, #ff9500);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    footer {
+      text-align:center;
+      padding:100px 20px;
+      background:rgba(5,5,5,0.8);
+      margin-top:120px;
+      border-top:1px solid rgba(255,60,0,0.3);
+      backdrop-filter:blur(20px);
+    }
+    @media(max-width:768px){
+      h1{font-size:3rem;}
+      h2{font-size:2.2rem;}
+.grid{grid-template-columns:1fr;}
+.side-character{width:120px; height:170px; bottom:10px; right:10px;}
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="canvas-bg"></canvas>
+
+<!-- Side Mascot Character -->
+<div class="side-character">
+  <img src="character.png" alt="arsalan.editz mascot">
+</div>
+
+<header>
+  <div class="hero-3d">
+    <h1>arsalan.editz</h1>
+    <div class="specialty-badge">⚡ 30-60 SECOND SPECIALIST ⚡</div>
+    <p class="subtitle">VIRAL REELS | YOUTUBE SHORTS | 3D SHORTS | FAST DELIVERY</p>
+    <a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20want%2030-60s%20reel%20edit" class="btn">BOOK REEL NOW</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">1000+</div>
+      <p>Reels Delivered</p>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30-60s</div>
+      <p>Only Short Form</p>
+    </div>
+    <div class="stat">
+      <div class="stat-num">12HR</div>
+      <p>Avg Delivery</p>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5M+</div>
+      <p>Total Views</p>
+    </div>
+  </div>
+
+  <h2>30-60s VIRAL SHOWREEL</h2>
+  <iframe width="100%" height="600" style="border-radius:24px; border:1px solid rgba(255,60,0,0.3);" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+
+  <h2>REELS & SHORTS PORTFOLIO</h2>
+  <div class="grid">
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+      <div class="card-content">
+        <span class="tag">30s REEL</span>
+        <h3>Hook + Transition Reel</h3>
+        <p>3s Killer Hook + Fast Cuts + Motion Text + Trending Audio - 30 Seconds</p>
+      </div>
+    </div>
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+      <div class="card-content">
+        <span class="tag">60s SHORT</span>
+        <h3>Storytelling Short</h3>
+        <p>Auto Captions + Beat Sync + Zoom Punch + SFX + Color - 60 Seconds</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>3D SHORTS SPECIAL</h2>
+  <div class="grid">
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+      <div class="card-content">
+        <span class="tag">3D SHORT</span>
+        <h3>Gaming 3D Intro</h3>
+        <p>Blender 3D + Neon Glow + Particles + Logo Reveal - 45 Seconds</p>
+      </div>
+    </div>
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+      <div class="card-content">
+        <span class="tag">VFX REEL</span>
+        <h3>Product 3D Reveal</h3>
+        <p>Element 3D + Motion Graphics + Sound Design - 50 Seconds</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>30-60s PACKAGES</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-content">
+        <h3>Basic Reel - 30s</h3>
+        <p class="price">₹299</p>
+        <p>Hook + Captions + SFX + Color Grade + 1 Revision + 24hr Delivery</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <h3>Pro Short - 60s</h3>
+        <p class="price">₹499</p>
+        <p>3D Text + Motion Graphics + Beat Sync + VFX + 2 Revisions + 12hr</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <h3>3D Viral Pack</h3>
+        <p class="price">₹999</p>
+        <p>Blender 3D + Particle FX + Advanced VFX + Sound Design + 3 Revisions</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p style="font-size:1.3rem; font-family:'Orbitron',sans-serif;">© 2026 arsalan.editz | 30-60s REELS SPECIALIST</p>
+  <p style="margin:20px 0; opacity:0.7;">I Only Edit 30-60 Second Viral Content. Nothing More, Nothing Less.</p>
+  <a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20need%2030-60s%20reel%20edit" class="btn">START YOUR REEL</a>
+</footer>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+  import * as THREE from 'three';
+  
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById('canvas-bg'),
+    alpha: true,
+    antialias: true
+  });
+  
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  
+  const particlesGeometry = new THREE.BufferGeometry();
+  const count = 3000;
+  const positions = new Float32Array(count * 3);
+  
+  for(let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 20;
+  }
+  
+  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.02,
+    color: 0xff3c00,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending
+  });
+  
+  const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+  scene.add(particles);
+  
+  const torus = new THREE.Mesh(
+    new THREE.TorusGeometry(2, 0.5, 16, 100),
+    new THREE.MeshBasicMaterial({color: 0xff3c00, wireframe: true, transparent: true, opacity: 0.3})
+  );
+  torus.position.set(5, 0, -5);
+  scene.add(torus);
+  
+  const icosahedron = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(1.5, 0),
+    new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, transparent: true, opacity: 0.3})
+  );
+  icosahedron.position.set(-5, 2, -3);
+  scene.add(icosahedron);
+  
+  camera.position.z = 5;
+  
+  function animate() {
+    requestAnimationFrame(animate);
+    particles.rotation.y += 0.0005;
+    particles.rotation.x += 0.0002;
+    torus.rotation.x += 0.01;
+    torus.rotation.y += 0.005;
+    icosahedron.rotation.x += 0.008;
+    icosahedron.rotation.y += 0.01;
+    renderer.render(scene, camera);
+  }
+  
+  animate();
+  
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+</script>
+
+</body>
+</html>
