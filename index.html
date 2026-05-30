@@ -96,7 +96,6 @@
       50% {transform:scale(1.05) rotate(2deg); box-shadow:0 0 60px rgba(255,215,0,0.9);}
     }
 
- /* ANIMATED TEXT */
     h1 {
       font-size:3.8rem;
       font-weight:800;
@@ -124,7 +123,6 @@
       50% {background-position:100% 50%;}
     }
 
- /* TYPEWRITER SUBTITLE */
 .subtitle {
       font-size:1.15rem;
       opacity:0.9;
@@ -163,7 +161,7 @@
       75% {transform:translateX(3px); box-shadow:0 0 30px rgba(255,0,0,0.7);}
     }
 
- /* STATS WITH COUNT UP */
+ /* STATS */
 .stats {
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -426,6 +424,109 @@
       transform:scale(0.92);
     }
 
+ /* LIGHTBOX - FULL SCREEN THUMBNAIL */
+.lightbox {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.95);
+      z-index:9999;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      backdrop-filter:blur(20px);
+    }
+.lightbox.show {
+      display:flex;
+      animation:fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+.lightbox-content {
+      position:relative;
+      max-width:500px;
+      width:100%;
+      animation:scaleUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    @keyframes scaleUp {
+      0% {transform:scale(0.5); opacity:0;}
+      100% {transform:scale(1); opacity:1;}
+    }
+.lightbox-img {
+      width:100%;
+      border-radius:20px;
+      box-shadow:0 30px 80px rgba(255,0,110,0.5);
+      display:block;
+    }
+.lightbox-close {
+      position:absolute;
+      top:-50px;
+      right:0;
+      background:rgba(255,255,255,0.1);
+      border:2px solid rgba(255,255,255,0.3);
+      color:#fff;
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      font-size:1.5rem;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:0.3s;
+    }
+.lightbox-close:active {
+      background:rgba(255,0,110,0.8);
+      transform:scale(0.9);
+    }
+
+ /* ORDER POPUP ANIMATION */
+.order-popup {
+      position:absolute;
+      bottom:20px;
+      left:20px;
+      right:20px;
+      background:linear-gradient(135deg, #ff006e, #8338ec);
+      padding:20px;
+      border-radius:20px;
+      box-shadow:0 20px 60px rgba(255,0,110,0.8);
+      text-align:center;
+      animation:slideUpBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s both;
+    }
+    @keyframes slideUpBounce {
+      0% {opacity:0; transform:translateY(50px) scale(0.8);}
+      100% {opacity:1; transform:translateY(0) scale(1);}
+    }
+.order-popup-text {
+      font-size:1.1rem;
+      font-weight:700;
+      margin-bottom:15px;
+      line-height:1.4;
+    }
+.order-popup-btn {
+      background:#fff;
+      color:#ff006e;
+      border:none;
+      padding:14px 30px;
+      border-radius:14px;
+      font-weight:800;
+      font-size:1rem;
+      cursor:pointer;
+      width:100%;
+      transition:0.3s;
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% {transform:scale(1); box-shadow:0 0 0 0 rgba(255,255,255,0.7);}
+      50% {transform:scale(1.02); box-shadow:0 0 0 10px rgba(255,255,255,0);}
+    }
+.order-popup-btn:active {
+      transform:scale(0.95);
+    }
+
  /* STICKY WA */
 .sticky-wa {
       position:fixed;
@@ -473,6 +574,18 @@
 
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Full Thumbnail">
+    <div class="order-popup" id="orderPopup">
+      <div class="order-popup-text">Aapko kaisa laga ye thumbnail design? ✨<br>Kya ye wala pasand hai?</div>
+      <button class="order-popup-btn" id="orderBtn">🚀 Order Kar Du</button>
+    </div>
+  </div>
+</div>
 
 <div class="container">
 
@@ -554,46 +667,46 @@
   <div class="section">
     <h2>Recent Work</h2>
     <div class="portfolio-grid">
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox('thumb1.jpg', 'Video Editing Guide', 299, 499)">
         <img class="portfolio-img" src="thumb1.jpg" alt="Work 1">
         <div class="portfolio-info">
           <div class="portfolio-title">Video Editing Guide</div>
           <div class="portfolio-btns">
-            <button class="p-btn" onclick="orderStyle('Editing Guide', '30sec', 299)">30s ₹299</button>
-            <button class="p-btn" onclick="orderStyle('Editing Guide', '60sec', 499)">60s ₹499</button>
+            <button class="p-btn" onclick="event.stopPropagation(); orderStyle('Editing Guide', '30sec', 299)">30s ₹299</button>
+            <button class="p-btn" onclick="event.stopPropagation(); orderStyle('Editing Guide', '60sec', 499)">60s ₹499</button>
           </div>
         </div>
       </div>
 
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox('thumb2.jpg', 'Politics Explainer', 399, 599)">
         <img class="portfolio-img" src="thumb2.jpg" alt="Work 2">
         <div class="portfolio-info">
           <div class="portfolio-title">Politics Explainer</div>
           <div class="portfolio-btns">
-            <button class="p-btn" onclick="orderStyle('Politics Video', '30sec', 399)">30s ₹399</button>
-            <button class="p-btn" onclick="orderStyle('Politics Video', '60sec', 599)">60s ₹599</button>
+            <button class="p-btn" onclick="event.stopPropagation(); orderStyle('Politics Video', '30sec', 399)">30s ₹399</button>
+            <button class="p-btn" onclick="event.stopPropagation(); orderStyle('Politics Video', '60sec', 599)">60s ₹599</button>
           </div>
         </div>
       </div>
 
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox('thumb3.jpg', 'City vs Village', 399, 599)">
         <img class="portfolio-img" src="thumb3.jpg" alt="Work 3">
         <div class="portfolio-info">
           <div class="portfolio-title">City vs Village</div>
           <div class="portfolio-btns">
-            <button class="p-btn" onclick="orderStyle('Comparison Video', '30sec', 399)">30s ₹399</button>
-            <button class="p-btn" onclick="orderStyle('Comparison Video', '60sec', 599)">60s ₹599</button>
+            <button class="p-btn" onclick="event.stopPropagation(); orderStyle('Comparison Video', '30sec', 399)">30s ₹399</button>
+            <button class="p-btn" onclick="event.stopPropagation(); orderStyle('Comparison Video', '60sec', 599)">60s ₹599</button>
           </div>
         </div>
       </div>
 
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox('thumb4.jpg', 'Talking Head Pro', 349, 549)">
         <img class="portfolio-img" src="thumb4.jpg" alt="Work 4">
         <div class="portfolio-info">
           <div class="portfolio-title">Talking Head Pro</div>
           <div class="portfolio-btns">
-            <button class="p-btn" onclick="orderStyle('Talking Head', '30sec', 349)">30s ₹349</button>
-            <button class="p-btn" onclick="orderStyle('Talking Head', '60sec', 549)">60s ₹549</button>
+            <button class="p-btn" onclick="event.stopPropagation(); orderStyle('Talking Head', '30sec', 349)">30s ₹349</button>
+            <button class="p-btn" onclick="event.stopPropagation(); orderStyle('Talking Head', '60sec', 549)">60s ₹549</button>
           </div>
         </div>
       </div>
@@ -662,6 +775,39 @@
       }
     };
     setTimeout(updateCount, 1000);
+  });
+
+  // LIGHTBOX FUNCTIONS
+  let currentStyle = '';
+  let currentPrice30 = 0;
+  let currentPrice60 = 0;
+
+  function openLightbox(imgSrc, title, price30, price60) {
+    currentStyle = title;
+    currentPrice30 = price30;
+    currentPrice60 = price60;
+    document.getElementById('lightboxImg').src = imgSrc;
+    document.getElementById('lightbox').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+
+  // ORDER BUTTON IN POPUP
+  document.getElementById('orderBtn').addEventListener('click', () => {
+    const msg = `Hi Arsalan, Mujhe "${currentStyle}" wala design pasand hai! 60sec ke liye ₹${currentPrice60} me order karna hai.`;
+    window.open(`https://wa.me/918928822744?text=${encodeURIComponent(msg)}`, '_blank');
+    closeLightbox();
+  });
+
+  // CLOSE LIGHTBOX ON BACKGROUND CLICK
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') {
+      closeLightbox();
+    }
   });
 
   // ORDER FUNCTIONS
