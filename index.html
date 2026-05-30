@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,7 @@
   <title>arsalan.editz | 30-60s Reels Specialist</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-    
+
     * {margin:0; padding:0; box-sizing:border-box;}
     body {
       background:#0a0a0f;
@@ -14,8 +14,8 @@
       font-family:'Space Grotesk', sans-serif;
       overflow-x:hidden;
     }
-    
-   .bg-anim {
+
+ .bg-anim {
       position:fixed;
       top:0; left:0;
       width:100%; height:100%;
@@ -29,8 +29,8 @@
       50% {background-position:100% 50%;}
       100% {background-position:0% 50%;}
     }
-    
-   .orb {
+
+ .orb {
       position:fixed;
       border-radius:50%;
       filter:blur(80px);
@@ -38,12 +38,12 @@
       animation:float 20s infinite ease-in-out;
       z-index:1;
     }
-   .orb1 {
+ .orb1 {
       width:300px; height:300px;
       background:#ff006e;
       top:-100px; left:-100px;
     }
-   .orb2 {
+ .orb2 {
       width:250px; height:250px;
       background:#3a86ff;
       bottom:-100px; right:-100px;
@@ -54,16 +54,16 @@
       33% {transform:translate(50px,50px) scale(1.1);}
       66% {transform:translate(-30px,80px) scale(0.9);}
     }
-    
-   .container {
+
+ .container {
       position:relative;
       z-index:2;
       padding:20px;
       max-width:500px;
       margin:auto;
     }
-    
-   .hero {
+
+ .hero {
       min-height:100vh;
       display:flex;
       flex-direction:column;
@@ -72,8 +72,8 @@
       text-align:center;
       padding:40px 20px;
     }
-    
-   .badge {
+
+ .badge {
       background:rgba(255,255,255,0.1);
       backdrop-filter:blur(20px);
       border:1px solid rgba(255,255,255,0.2);
@@ -85,7 +85,7 @@
       margin-bottom:25px;
       box-shadow:0 8px 32px rgba(0,0,0,0.3);
     }
-    
+
     h1 {
       font-size:3.2rem;
       font-weight:700;
@@ -95,29 +95,29 @@
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
-    
-   .gradient-text {
+
+ .gradient-text {
       background:linear-gradient(135deg, #ff006e 0%, #3a86ff 100%);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
-    
-   .subtitle {
+
+ .subtitle {
       font-size:1rem;
       opacity:0.8;
       margin-bottom:30px;
       line-height:1.6;
       font-weight:400;
     }
-    
-   .stats {
+
+ .stats {
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:15px;
       width:100%;
       margin:30px 0;
     }
-   .stat-box {
+ .stat-box {
       background:rgba(255,255,255,0.05);
       backdrop-filter:blur(20px);
       border:1px solid rgba(255,255,255,0.1);
@@ -125,7 +125,7 @@
       padding:20px 10px;
       text-align:center;
     }
-   .stat-num {
+ .stat-num {
       font-size:1.8rem;
       font-weight:700;
       background:linear-gradient(135deg, #ff006e, #3a86ff);
@@ -133,13 +133,13 @@
       -webkit-text-fill-color:transparent;
       margin-bottom:5px;
     }
-   .stat-label {
+ .stat-label {
       font-size:0.7rem;
       opacity:0.7;
       font-weight:500;
     }
-    
-   .btn {
+
+ .btn {
       width:100%;
       background:linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
       color:#fff;
@@ -155,63 +155,96 @@
       margin:20px 0;
       transition:0.3s;
     }
-   .btn:active {transform:scale(0.95);}
-    
-   .section {margin:60px 0;}
+ .btn:active {transform:scale(0.95);}
+
+ .section {margin:60px 0;}
     h2 {
       font-size:2rem;
       font-weight:700;
-      margin-bottom:25px;
+      margin-bottom:15px;
       text-align:center;
     }
-    
-   .card {
+
+ .live-order {
+      background:rgba(37,211,102,0.1);
+      border:1px solid rgba(37,211,102,0.3);
+      border-radius:100px;
+      padding:10px 20px;
+      font-size:0.8rem;
+      text-align:center;
+      margin-bottom:25px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+ .live-dot {
+      width:8px;
+      height:8px;
+      background:#25D366;
+      border-radius:50%;
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% {opacity:1;}
+      50% {opacity:0.3;}
+    }
+
+ .thumbnail-grid {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:20px;
+    }
+ .thumb-card {
       background:rgba(255,255,255,0.05);
       backdrop-filter:blur(20px);
       border:1px solid rgba(255,255,255,0.1);
-      border-radius:20px;
-      padding:25px;
-      margin-bottom:20px;
+      border-radius:16px;
+      overflow:hidden;
+      cursor:pointer;
       transition:0.3s;
+      position:relative;
     }
-   .card:active {
-      transform:scale(0.98);
-      background:rgba(255,255,255,0.08);
+ .thumb-card:active {
+      transform:scale(0.95);
     }
-    
-   .tag {
-      background:linear-gradient(135deg, #ff006e, #3a86ff);
+ .thumb-img {
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      display:block;
+    }
+ .thumb-info {
+      padding:12px;
+    }
+ .thumb-title {
+      font-size:0.85rem;
+      font-weight:600;
+      margin-bottom:8px;
+    }
+ .style-btns {
+      display:flex;
+      gap:6px;
+    }
+ .style-btn {
+      flex:1;
+      background:rgba(255,255,255,0.1);
+      border:1px solid rgba(255,255,255,0.2);
       color:#fff;
-      padding:6px 14px;
-      border-radius:100px;
+      padding:6px;
+      border-radius:8px;
       font-size:0.7rem;
       font-weight:600;
-      display:inline-block;
-      margin-bottom:12px;
+      cursor:pointer;
+      transition:0.2s;
     }
-    
-   .card h3 {
-      font-size:1.3rem;
-      margin-bottom:8px;
-      font-weight:600;
-    }
-    
-   .card p {
-      opacity:0.7;
-      font-size:0.9rem;
-      line-height:1.5;
-      margin-bottom:15px;
-    }
-    
-   .price {
-      font-size:1.8rem;
-      font-weight:700;
+ .style-btn:active {
       background:linear-gradient(135deg, #ff006e, #3a86ff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+      transform:scale(0.95);
     }
-    
-   .sticky-wa {
+
+ .sticky-wa {
       position:fixed;
       bottom:20px;
       left:20px;
@@ -231,15 +264,14 @@
       justify-content:center;
       gap:10px;
     }
-    
-    /* Mascot + Speech Bubble */
-   .mascot-wrapper {
+
+ .mascot-wrapper {
       position:fixed;
       bottom:90px;
       right:15px;
       z-index:998;
     }
-   .mascot {
+ .mascot {
       width:100px;
       height:140px;
       pointer-events:none;
@@ -250,13 +282,13 @@
       0%, 100% {transform:translateY(0px) rotate(3deg);}
       50% {transform:translateY(-10px) rotate(-3deg);}
     }
-   .mascot img {
+ .mascot img {
       width:100%;
       height:100%;
       object-fit:contain;
     }
-    
-   .speech-bubble {
+
+ .speech-bubble {
       position:absolute;
       bottom:150px;
       right:0;
@@ -275,11 +307,11 @@
       cursor:pointer;
       border:2px solid #ff006e;
     }
-   .speech-bubble.show {
+ .speech-bubble.show {
       opacity:1;
       transform:scale(1) translateY(0);
     }
-   .speech-bubble::after {
+ .speech-bubble::after {
       content:'';
       position:absolute;
       bottom:-8px;
@@ -290,10 +322,7 @@
       border-right:8px solid transparent;
       border-top:8px solid rgba(255,255,255,0.95);
     }
-   .speech-bubble:active {
-      transform:scale(0.95);
-    }
-    
+
     footer {
       text-align:center;
       padding:40px 20px 120px;
@@ -310,7 +339,7 @@
 
 <div class="mascot-wrapper">
   <div class="speech-bubble" id="speechBubble">
-    Hey! 👋 Kis type ka video edit karana hai?
+    Hey! 👋 Neeche style choose karo
   </div>
   <div class="mascot">
     <img src="character.png" alt="mascot">
@@ -318,12 +347,12 @@
 </div>
 
 <div class="container">
-  
+
   <div class="hero">
     <div class="badge">⚡ 30-60 SECOND EXPERT</div>
     <h1>arsalan<span class="gradient-text">.editz</span></h1>
     <p class="subtitle">Viral Reels & YouTube Shorts Editor<br>12hr Fast Delivery Guaranteed</p>
-    
+
     <div class="stats">
       <div class="stat-box">
         <div class="stat-num">1K+</div>
@@ -338,39 +367,68 @@
         <div class="stat-label">VIEWS</div>
       </div>
     </div>
-    
+
     <a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20need%2030-60s%20reel" class="btn">🚀 START MY REEL</a>
   </div>
 
   <div class="section">
-    <h2>30-60s Packages</h2>
-    
-    <div class="card">
-      <span class="tag">30 SEC REEL</span>
-      <h3>Basic Viral Pack</h3>
-      <p>Hook + Auto Captions + Trending Audio + Color Grade + 1 Revision</p>
-      <div class="price">₹299</div>
+    <h2>Pick Your Style</h2>
+    <div class="live-order">
+      <div class="live-dot"></div>
+      <span id="liveText">Amit ne Basic Pack order kiya • abhi</span>
     </div>
-    
-    <div class="card">
-      <span class="tag">60 SEC SHORT</span>
-      <h3>Pro Motion Pack</h3>
-      <p>3D Text + Motion Graphics + Beat Sync + VFX + SFX + 2 Revisions</p>
-      <div class="price">₹499</div>
-    </div>
-    
-    <div class="card">
-      <span class="tag">3D SHORT</span>
-      <h3>Blender VFX Pack</h3>
-      <p>3D Animation + Particle FX + Logo Reveal + Sound Design + 3 Revisions</p>
-      <div class="price">₹999</div>
+
+    <div class="thumbnail-grid">
+      <div class="thumb-card">
+        <img class="thumb-img" src="thumb1.jpg" alt="Editing Guide">
+        <div class="thumb-info">
+          <div class="thumb-title">Video Editing Guide</div>
+          <div class="style-btns">
+            <button class="style-btn" onclick="orderStyle('Editing Guide', '30sec', 299)">30s ₹299</button>
+            <button class="style-btn" onclick="orderStyle('Editing Guide', '60sec', 499)">60s ₹499</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="thumb-card">
+        <img class="thumb-img" src="thumb2.jpg" alt="Politics">
+        <div class="thumb-info">
+          <div class="thumb-title">Politics Explainer</div>
+          <div class="style-btns">
+            <button class="style-btn" onclick="orderStyle('Politics Video', '30sec', 399)">30s ₹399</button>
+            <button class="style-btn" onclick="orderStyle('Politics Video', '60sec', 599)">60s ₹599</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="thumb-card">
+        <img class="thumb-img" src="thumb3.jpg" alt="City vs Village">
+        <div class="thumb-info">
+          <div class="thumb-title">City vs Village</div>
+          <div class="style-btns">
+            <button class="style-btn" onclick="orderStyle('Comparison Video', '30sec', 399)">30s ₹399</button>
+            <button class="style-btn" onclick="orderStyle('Comparison Video', '60sec', 599)">60s ₹599</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="thumb-card">
+        <img class="thumb-img" src="thumb4.jpg" alt="Talking Head">
+        <div class="thumb-info">
+          <div class="thumb-title">Talking Head Pro</div>
+          <div class="style-btns">
+            <button class="style-btn" onclick="orderStyle('Talking Head', '30sec', 349)">30s ₹349</button>
+            <button class="style-btn" onclick="orderStyle('Talking Head', '60sec', 549)">60s ₹549</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <footer>
     © 2026 arsalan.editz | Only 30-60s Content
   </footer>
-  
+
 </div>
 
 <a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20want%20reel%20edit" class="sticky-wa">
@@ -378,23 +436,20 @@
 </a>
 
 <script>
-  // Speech bubble logic
   const bubble = document.getElementById('speechBubble');
   const messages = [
-    "Hey! 👋 Kis type ka video edit karana hai?",
-    "Reel banwana hai ya Short? 🎬",
-    "30 sec ya 60 sec? Batao na 😊",
-    "3D VFX chahiye kya? ✨"
+    "Hey! 👋 Neeche style choose karo",
+    "Thumbnail pe tap karke order karo 🎬",
+    "30 sec ya 60 sec? Button daba do 😊",
+    "12hr me delivery pakki ✨"
   ];
   let msgIndex = 0;
-  
-  // Show first message after 3 seconds
+
   setTimeout(() => {
     bubble.classList.add('show');
     typeWriter(messages[0]);
   }, 3000);
-  
-  // Change message every 8 seconds
+
   setInterval(() => {
     msgIndex = (msgIndex + 1) % messages.length;
     bubble.classList.remove('show');
@@ -403,8 +458,7 @@
       typeWriter(messages[msgIndex]);
     }, 400);
   }, 8000);
-  
-  // Typewriter effect
+
   function typeWriter(text) {
     bubble.textContent = '';
     let i = 0;
@@ -417,12 +471,27 @@
       }
     }, 40);
   }
-  
-  // Click bubble to open WhatsApp
+
   bubble.addEventListener('click', () => {
-    window.open('https://wa.me/918928822744?text=Hi%20Arsalan,%20Mascot%20ne%20poocha%20tha%20-%20mujhe%20reel%20edit%20karani%20hai', '_blank');
+    window.open('https://wa.me/918928822744?text=Hi%20Arsalan,%20Mujhe%20reel%20edit%20karani%20hai', '_blank');
   });
+
+  const names = ['Rohit', 'Priya', 'Aman', 'Sneha', 'Vikash', 'Anjali', 'Rahul'];
+  const packs = ['Basic Pack', 'Pro Pack', 'Comparison Pack', 'Politics Pack'];
+  const liveText = document.getElementById('liveText');
+
+  setInterval(() => {
+    const name = names[Math.floor(Math.random() * names.length)];
+    const pack = packs[Math.floor(Math.random() * packs.length)];
+    const mins = Math.floor(Math.random() * 5) + 1;
+    liveText.textContent = `${name} ne ${pack} order kiya • ${mins} min pehle`;
+  }, 6000);
+
+  function orderStyle(style, duration, price) {
+    const msg = `Hi Arsalan, Mujhe ${style} ${duration} wala chahiye ₹${price} me. Jaldi start karo!`;
+    window.open(`https://wa.me/918928822744?text=${encodeURIComponent(msg)}`, '_blank');
+  }
 </script>
 
 </body>
-        </html>
+    </html>
