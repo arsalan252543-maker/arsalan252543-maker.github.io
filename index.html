@@ -3,67 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>arsalan.editz | 30-60s Reels Specialist</title>
+  <title>arsalan.editz | Premium Reel Editor</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
 
     * {margin:0; padding:0; box-sizing:border-box;}
     body {
-      background:#0a0a0f;
+      background:#000;
       color:#fff;
       font-family:'Space Grotesk', sans-serif;
       overflow-x:hidden;
     }
 
- .bg-anim {
+ /* VIDEO BACKGROUND */
+.video-bg {
       position:fixed;
       top:0; left:0;
-      width:100%; height:100%;
+      width:100%; height:100vh;
       z-index:0;
-      background:linear-gradient(-45deg, #0a0a0f, #1a0a2e, #16213e, #0f3460);
-      background-size:400% 400%;
-      animation:gradientBG 15s ease infinite;
+      overflow:hidden;
     }
-    @keyframes gradientBG {
-      0% {background-position:0% 50%;}
-      50% {background-position:100% 50%;}
-      100% {background-position:0% 50%;}
+.video-bg video {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(0.2);
+    }
+.overlay {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.95) 100%);
     }
 
- .orb {
+ /* GLOW EFFECTS */
+.glow {
       position:fixed;
       border-radius:50%;
-      filter:blur(80px);
+      filter:blur(120px);
       opacity:0.4;
-      animation:float 20s infinite ease-in-out;
       z-index:1;
     }
- .orb1 {
-      width:300px; height:300px;
+.glow1 {
+      width:500px; height:500px;
       background:#ff006e;
-      top:-100px; left:-100px;
+      top:-250px; left:-250px;
+      animation:moveGlow 20s infinite ease-in-out;
     }
- .orb2 {
-      width:250px; height:250px;
+.glow2 {
+      width:400px; height:400px;
       background:#3a86ff;
-      bottom:-100px; right:-100px;
-      animation-delay:5s;
+      bottom:-200px; right:-200px;
+      animation:moveGlow 25s infinite ease-in-out reverse;
     }
-    @keyframes float {
-      0%, 100% {transform:translate(0,0) scale(1);}
-      33% {transform:translate(50px,50px) scale(1.1);}
-      66% {transform:translate(-30px,80px) scale(0.9);}
+    @keyframes moveGlow {
+      0%, 100% {transform:translate(0,0);}
+      50% {transform:translate(100px,100px);}
     }
 
- .container {
+.container {
       position:relative;
       z-index:2;
-      padding:20px;
       max-width:500px;
       margin:auto;
     }
 
- .hero {
+ /* HERO */
+.hero {
       min-height:100vh;
       display:flex;
       flex-direction:column;
@@ -73,178 +79,355 @@
       padding:40px 20px;
     }
 
- .badge {
-      background:rgba(255,255,255,0.1);
-      backdrop-filter:blur(20px);
-      border:1px solid rgba(255,255,255,0.2);
-      padding:8px 20px;
+.vip-badge {
+      background:linear-gradient(135deg, #FFD700, #FFA500);
+      color:#000;
+      padding:10px 28px;
       border-radius:100px;
-      font-size:0.75rem;
-      font-weight:600;
+      font-size:0.8rem;
+      font-weight:800;
       letter-spacing:1px;
       margin-bottom:25px;
-      box-shadow:0 8px 32px rgba(0,0,0,0.3);
+      box-shadow:0 0 40px rgba(255,215,0,0.6);
+      animation:pulseGold 2s infinite;
+    }
+    @keyframes pulseGold {
+      0%, 100% {transform:scale(1) rotate(0deg); box-shadow:0 0 40px rgba(255,215,0,0.6);}
+      50% {transform:scale(1.05) rotate(2deg); box-shadow:0 0 60px rgba(255,215,0,0.9);}
     }
 
+ /* ANIMATED TEXT */
     h1 {
-      font-size:3.2rem;
-      font-weight:700;
-      line-height:1.1;
-      margin-bottom:15px;
-      background:linear-gradient(135deg, #fff 0%, #a8a8ff 100%);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+      font-size:3.8rem;
+      font-weight:800;
+      line-height:1;
+      margin-bottom:20px;
+      text-shadow:0 0 50px rgba(255,0,110,0.6);
+      animation:textPop 0.8s ease-out;
+    }
+    @keyframes textPop {
+      0% {transform:scale(0.5) translateY(30px); opacity:0;}
+      60% {transform:scale(1.1) translateY(-5px);}
+      100% {transform:scale(1) translateY(0); opacity:1;}
     }
 
- .gradient-text {
-      background:linear-gradient(135deg, #ff006e 0%, #3a86ff 100%);
+.gradient-text {
+      background:linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
+      background-size:200% 200%;
+      animation:gradientMove 3s ease infinite;
+      display:inline-block;
+    }
+    @keyframes gradientMove {
+      0%, 100% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
     }
 
- .subtitle {
-      font-size:1rem;
-      opacity:0.8;
+ /* TYPEWRITER SUBTITLE */
+.subtitle {
+      font-size:1.15rem;
+      opacity:0.9;
       margin-bottom:30px;
       line-height:1.6;
-      font-weight:400;
+      font-weight:500;
+      min-height:60px;
+      animation:fadeInUp 1s ease-out 0.3s both;
+    }
+    @keyframes fadeInUp {
+      0% {opacity:0; transform:translateY(20px);}
+      100% {opacity:0.9; transform:translateY(0);}
+    }
+.typing-text {
+      border-right:3px solid #ff006e;
+      animation:blinkCursor 0.8s infinite;
+    }
+    @keyframes blinkCursor {
+      0%, 100% {border-color:#ff006e;}
+      50% {border-color:transparent;}
     }
 
- .stats {
+.slots {
+      background:rgba(255,0,0,0.2);
+      border:2px solid #ff0000;
+      border-radius:16px;
+      padding:16px 30px;
+      margin:25px 0;
+      font-weight:700;
+      font-size:1rem;
+      animation:shakeGlow 2s infinite;
+    }
+    @keyframes shakeGlow {
+      0%, 100% {transform:translateX(0); box-shadow:0 0 20px rgba(255,0,0,0.4);}
+      25% {transform:translateX(-3px); box-shadow:0 0 30px rgba(255,0,0,0.7);}
+      75% {transform:translateX(3px); box-shadow:0 0 30px rgba(255,0,0,0.7);}
+    }
+
+ /* STATS WITH COUNT UP */
+.stats {
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:15px;
+      gap:14px;
       width:100%;
-      margin:30px 0;
+      margin:35px 0;
     }
- .stat-box {
-      background:rgba(255,255,255,0.05);
-      backdrop-filter:blur(20px);
-      border:1px solid rgba(255,255,255,0.1);
-      border-radius:16px;
-      padding:20px 10px;
+.stat-box {
+      background:rgba(255,255,255,0.06);
+      backdrop-filter:blur(30px);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:22px;
+      padding:24px 12px;
       text-align:center;
+      transition:0.3s;
+      animation:slideInStagger 0.6s ease-out both;
     }
- .stat-num {
-      font-size:1.8rem;
-      font-weight:700;
+.stat-box:nth-child(1) {animation-delay:0.2s;}
+.stat-box:nth-child(2) {animation-delay:0.4s;}
+.stat-box:nth-child(3) {animation-delay:0.6s;}
+    @keyframes slideInStagger {
+      0% {opacity:0; transform:translateY(30px) scale(0.8);}
+      100% {opacity:1; transform:translateY(0) scale(1);}
+    }
+.stat-box:active {
+      transform:scale(0.94);
+      background:rgba(255,0,110,0.15);
+    }
+.stat-num {
+      font-size:2.2rem;
+      font-weight:800;
       background:linear-gradient(135deg, #ff006e, #3a86ff);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      margin-bottom:5px;
+      margin-bottom:6px;
+      animation:countGlow 2s ease-in-out infinite;
     }
- .stat-label {
-      font-size:0.7rem;
-      opacity:0.7;
-      font-weight:500;
+    @keyframes countGlow {
+      0%, 100% {filter:drop-shadow(0 0 10px rgba(255,0,110,0.5));}
+      50% {filter:drop-shadow(0 0 20px rgba(58,134,255,0.8));}
+    }
+.stat-label {
+      font-size:0.75rem;
+      opacity:0.8;
+      font-weight:600;
     }
 
- .btn {
+ /* MAIN CTA */
+.btn-vip {
       width:100%;
-      background:linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+      background:linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+      background-size:200% 200%;
       color:#fff;
-      padding:18px;
+      padding:22px;
       text-decoration:none;
-      border-radius:16px;
-      font-weight:600;
-      font-size:1.1rem;
+      border-radius:22px;
+      font-weight:800;
+      font-size:1.3rem;
       display:block;
       text-align:center;
-      box-shadow:0 10px 40px rgba(255,0,110,0.4);
+      box-shadow:0 20px 60px rgba(255,0,110,0.6);
       border:none;
-      margin:20px 0;
+      margin:25px 0;
+      transition:0.3s;
+      animation:gradientMove 3s ease infinite, bounceIn 1s ease-out 0.8s both;
+      position:relative;
+      overflow:hidden;
+    }
+    @keyframes bounceIn {
+      0% {opacity:0; transform:scale(0.3);}
+      50% {transform:scale(1.05);}
+      100% {opacity:1; transform:scale(1);}
+    }
+.btn-vip::after {
+      content:'';
+      position:absolute;
+      top:0; left:-100%;
+      width:100%; height:100%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation:shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% {left:-100%;}
+      100% {left:100%;}
+    }
+.btn-vip:active {transform:scale(0.96);}
+
+ /* PACKAGES */
+.section {margin:70px 0; padding:0 20px;}
+    h2 {
+      font-size:2.4rem;
+      font-weight:800;
+      margin-bottom:25px;
+      text-align:center;
+      animation:fadeInUp 0.8s ease-out;
+    }
+
+.packages {
+      display:grid;
+      gap:22px;
+      margin-top:35px;
+    }
+.package {
+      background:rgba(255,255,255,0.04);
+      backdrop-filter:blur(40px);
+      border:2px solid rgba(255,255,255,0.08);
+      border-radius:26px;
+      padding:28px;
+      position:relative;
+      transition:0.3s;
+      animation:fadeInUp 0.8s ease-out both;
+    }
+.package:nth-child(1) {animation-delay:0.2s;}
+.package:nth-child(2) {animation-delay:0.4s;}
+.package:nth-child(3) {animation-delay:0.6s;}
+.package.vip {
+      border:2px solid #FFD700;
+      box-shadow:0 0 50px rgba(255,215,0,0.3);
+      transform:scale(1.03);
+    }
+.vip-tag {
+      position:absolute;
+      top:-14px;
+      left:50%;
+      transform:translateX(-50%);
+      background:linear-gradient(135deg, #FFD700, #FFA500);
+      color:#000;
+      padding:7px 24px;
+      border-radius:100px;
+      font-size:0.75rem;
+      font-weight:800;
+      animation:tagFloat 2s ease-in-out infinite;
+    }
+    @keyframes tagFloat {
+      0%, 100% {transform:translateX(-50%) translateY(0);}
+      50% {transform:translateX(-50%) translateY(-3px);}
+    }
+.package-name {
+      font-size:1.4rem;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+.package-price {
+      font-size:2.8rem;
+      font-weight:800;
+      background:linear-gradient(135deg, #ff006e, #3a86ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:18px;
+      animation:pricePulse 2s ease-in-out infinite;
+    }
+    @keyframes pricePulse {
+      0%, 100% {transform:scale(1);}
+      50% {transform:scale(1.05);}
+    }
+.package-features {
+      list-style:none;
+      margin:22px 0;
+    }
+.package-features li {
+      padding:10px 0;
+      font-size:0.95rem;
+      opacity:0.9;
+      font-weight:500;
+      animation:fadeInLeft 0.5s ease-out both;
+    }
+.package-features li:nth-child(1) {animation-delay:0.1s;}
+.package-features li:nth-child(2) {animation-delay:0.2s;}
+.package-features li:nth-child(3) {animation-delay:0.3s;}
+.package-features li:nth-child(4) {animation-delay:0.4s;}
+.package-features li:nth-child(5) {animation-delay:0.5s;}
+.package-features li:nth-child(6) {animation-delay:0.6s;}
+    @keyframes fadeInLeft {
+      0% {opacity:0; transform:translateX(-20px);}
+      100% {opacity:0.9; transform:translateX(0);}
+    }
+.package-features li::before {
+      content:'✓ ';
+      color:#25D366;
+      font-weight:800;
+      margin-right:10px;
+      font-size:1.1rem;
+    }
+.package-btn {
+      width:100%;
+      background:linear-gradient(135deg, #ff006e, #3a86ff);
+      color:#fff;
+      padding:16px;
+      border:none;
+      border-radius:16px;
+      font-weight:700;
+      font-size:1.05rem;
+      cursor:pointer;
       transition:0.3s;
     }
- .btn:active {transform:scale(0.95);}
+.package-btn:active {transform:scale(0.95);}
 
- .section {margin:60px 0;}
-    h2 {
-      font-size:2rem;
-      font-weight:700;
-      margin-bottom:15px;
-      text-align:center;
-    }
-
- .live-order {
-      background:rgba(37,211,102,0.1);
-      border:1px solid rgba(37,211,102,0.3);
-      border-radius:100px;
-      padding:10px 20px;
-      font-size:0.8rem;
-      text-align:center;
-      margin-bottom:25px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-    }
- .live-dot {
-      width:8px;
-      height:8px;
-      background:#25D366;
-      border-radius:50%;
-      animation:pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% {opacity:1;}
-      50% {opacity:0.3;}
-    }
-
- .thumbnail-grid {
+ /* PORTFOLIO GRID */
+.portfolio-grid {
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:12px;
-      margin-top:20px;
+      gap:14px;
+      margin-top:25px;
     }
- .thumb-card {
-      background:rgba(255,255,255,0.05);
+.portfolio-item {
+      background:rgba(255,255,255,0.04);
       backdrop-filter:blur(20px);
-      border:1px solid rgba(255,255,255,0.1);
-      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:18px;
       overflow:hidden;
       cursor:pointer;
       transition:0.3s;
-      position:relative;
+      animation:zoomIn 0.6s ease-out both;
     }
- .thumb-card:active {
-      transform:scale(0.95);
+.portfolio-item:nth-child(1) {animation-delay:0.1s;}
+.portfolio-item:nth-child(2) {animation-delay:0.2s;}
+.portfolio-item:nth-child(3) {animation-delay:0.3s;}
+.portfolio-item:nth-child(4) {animation-delay:0.4s;}
+    @keyframes zoomIn {
+      0% {opacity:0; transform:scale(0.8);}
+      100% {opacity:1; transform:scale(1);}
     }
- .thumb-img {
+.portfolio-item:active {transform:scale(0.94);}
+.portfolio-img {
       width:100%;
-      height:180px;
+      height:200px;
       object-fit:cover;
       display:block;
+      transition:0.3s;
     }
- .thumb-info {
-      padding:12px;
+.portfolio-item:hover.portfolio-img {
+      transform:scale(1.05);
     }
- .thumb-title {
-      font-size:0.85rem;
+.portfolio-info {
+      padding:14px;
+    }
+.portfolio-title {
+      font-size:0.9rem;
       font-weight:600;
-      margin-bottom:8px;
+      margin-bottom:10px;
     }
- .style-btns {
+.portfolio-btns {
       display:flex;
-      gap:6px;
+      gap:8px;
     }
- .style-btn {
+.p-btn {
       flex:1;
-      background:rgba(255,255,255,0.1);
-      border:1px solid rgba(255,255,255,0.2);
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
       color:#fff;
-      padding:6px;
-      border-radius:8px;
-      font-size:0.7rem;
-      font-weight:600;
+      padding:8px;
+      border-radius:10px;
+      font-size:0.75rem;
+      font-weight:700;
       cursor:pointer;
       transition:0.2s;
     }
- .style-btn:active {
+.p-btn:active {
       background:linear-gradient(135deg, #ff006e, #3a86ff);
-      transform:scale(0.95);
+      transform:scale(0.92);
     }
 
- .sticky-wa {
+ /* STICKY WA */
+.sticky-wa {
       position:fixed;
       bottom:20px;
       left:20px;
@@ -252,110 +435,57 @@
       z-index:999;
       background:linear-gradient(135deg, #25D366, #128C7E);
       color:#fff;
-      padding:16px;
-      border-radius:16px;
+      padding:20px;
+      border-radius:22px;
       text-align:center;
       text-decoration:none;
-      font-weight:600;
-      font-size:1rem;
-      box-shadow:0 10px 40px rgba(37,211,102,0.5);
+      font-weight:800;
+      font-size:1.15rem;
+      box-shadow:0 20px 60px rgba(37,211,102,0.7);
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
+      gap:12px;
+      animation:pulseBtn 2s infinite;
     }
-
- .mascot-wrapper {
-      position:fixed;
-      bottom:90px;
-      right:15px;
-      z-index:998;
-    }
- .mascot {
-      width:100px;
-      height:140px;
-      pointer-events:none;
-      animation:mascotBounce 3s ease-in-out infinite;
-      filter:drop-shadow(0 0 20px rgba(255,0,110,0.6));
-    }
-    @keyframes mascotBounce {
-      0%, 100% {transform:translateY(0px) rotate(3deg);}
-      50% {transform:translateY(-10px) rotate(-3deg);}
-    }
- .mascot img {
-      width:100%;
-      height:100%;
-      object-fit:contain;
-    }
-
- .speech-bubble {
-      position:absolute;
-      bottom:150px;
-      right:0;
-      background:rgba(255,255,255,0.95);
-      backdrop-filter:blur(20px);
-      color:#0a0a0f;
-      padding:15px 18px;
-      border-radius:18px 18px 4px 18px;
-      font-size:0.85rem;
-      font-weight:600;
-      max-width:220px;
-      box-shadow:0 10px 40px rgba(0,0,0,0.3);
-      opacity:0;
-      transform:scale(0.8) translateY(10px);
-      transition:0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      cursor:pointer;
-      border:2px solid #ff006e;
-    }
- .speech-bubble.show {
-      opacity:1;
-      transform:scale(1) translateY(0);
-    }
- .speech-bubble::after {
-      content:'';
-      position:absolute;
-      bottom:-8px;
-      right:20px;
-      width:0;
-      height:0;
-      border-left:8px solid transparent;
-      border-right:8px solid transparent;
-      border-top:8px solid rgba(255,255,255,0.95);
+    @keyframes pulseBtn {
+      0%, 100% {transform:scale(1);}
+      50% {transform:scale(1.03);}
     }
 
     footer {
       text-align:center;
-      padding:40px 20px 120px;
+      padding:60px 20px 140px;
       opacity:0.5;
-      font-size:0.8rem;
+      font-size:0.85rem;
     }
   </style>
 </head>
 <body>
 
-<div class="bg-anim"></div>
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-
-<div class="mascot-wrapper">
-  <div class="speech-bubble" id="speechBubble">
-    Hey! 👋 Neeche style choose karo
-  </div>
-  <div class="mascot">
-    <img src="character.png" alt="mascot">
-  </div>
+<!-- TERI VIDEO BACKGROUND -->
+<div class="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="bg-reel.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
 </div>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
 
 <div class="container">
 
   <div class="hero">
-    <div class="badge">⚡ 30-60 SECOND EXPERT</div>
+    <div class="vip-badge">👑 VIP EDITOR - LIMITED SLOTS</div>
     <h1>arsalan<span class="gradient-text">.editz</span></h1>
-    <p class="subtitle">Viral Reels & YouTube Shorts Editor<br>12hr Fast Delivery Guaranteed</p>
+    <p class="subtitle"><span class="typing-text" id="typingText"></span></p>
+
+    <div class="slots">⚡ ONLY 2 SLOTS LEFT TODAY</div>
 
     <div class="stats">
       <div class="stat-box">
-        <div class="stat-num">1K+</div>
+        <div class="stat-num" data-target="2000">0</div>
         <div class="stat-label">REELS</div>
       </div>
       <div class="stat-box">
@@ -363,62 +493,107 @@
         <div class="stat-label">DELIVERY</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">5M+</div>
-        <div class="stat-label">VIEWS</div>
+        <div class="stat-num" data-target="10">0</div>
+        <div class="stat-label">M+ VIEWS</div>
       </div>
     </div>
 
-    <a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20need%2030-60s%20reel" class="btn">🚀 START MY REEL</a>
+    <a href="#packages" class="btn-vip">🚀 CLAIM YOUR SLOT</a>
   </div>
 
-  <div class="section">
-    <h2>Pick Your Style</h2>
-    <div class="live-order">
-      <div class="live-dot"></div>
-      <span id="liveText">Amit ne Basic Pack order kiya • abhi</span>
+  <!-- PACKAGES -->
+  <div class="section" id="packages">
+    <h2>Select Package</h2>
+
+    <div class="packages">
+      <div class="package">
+        <div class="package-name">STARTER</div>
+        <div class="package-price">₹299</div>
+        <ul class="package-features">
+          <li>30 Second Viral Reel</li>
+          <li>Trending Audio + Captions</li>
+          <li>HD Export 1080p</li>
+          <li>1 Revision Free</li>
+          <li>12 Hour Delivery</li>
+        </ul>
+        <button class="package-btn" onclick="orderPack('Starter', 299)">BOOK STARTER</button>
+      </div>
+
+      <div class="package vip">
+        <div class="vip-tag">👑 MOST BOOKED</div>
+        <div class="package-name">PRO MAX</div>
+        <div class="package-price">₹599</div>
+        <ul class="package-features">
+          <li>60 Second Premium Reel</li>
+          <li>Motion Graphics + SFX</li>
+          <li>Color Grading Pro</li>
+          <li>Custom Thumbnail</li>
+          <li>3 Revisions Free</li>
+          <li>12 Hour Delivery</li>
+        </ul>
+        <button class="package-btn" onclick="orderPack('Pro Max', 599)">BOOK PRO MAX</button>
+      </div>
+
+      <div class="package">
+        <div class="package-name">CINEMATIC 3D</div>
+        <div class="package-price">₹999</div>
+        <ul class="package-features">
+          <li>60 Second Cinematic Reel</li>
+          <li>3D VFX + Animations</li>
+          <li>Hollywood Grade Color</li>
+          <li>Custom Thumbnail + Intro</li>
+          <li>Unlimited Revisions</li>
+          <li>12 Hour Delivery</li>
+        </ul>
+        <button class="package-btn" onclick="orderPack('Cinematic 3D', 999)">BOOK CINEMATIC</button>
+      </div>
     </div>
+  </div>
 
-    <div class="thumbnail-grid">
-      <div class="thumb-card">
-        <img class="thumb-img" src="thumb1.jpg" alt="Editing Guide">
-        <div class="thumb-info">
-          <div class="thumb-title">Video Editing Guide</div>
-          <div class="style-btns">
-            <button class="style-btn" onclick="orderStyle('Editing Guide', '30sec', 299)">30s ₹299</button>
-            <button class="style-btn" onclick="orderStyle('Editing Guide', '60sec', 499)">60s ₹499</button>
+  <!-- PORTFOLIO -->
+  <div class="section">
+    <h2>Recent Work</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img class="portfolio-img" src="thumb1.jpg" alt="Work 1">
+        <div class="portfolio-info">
+          <div class="portfolio-title">Video Editing Guide</div>
+          <div class="portfolio-btns">
+            <button class="p-btn" onclick="orderStyle('Editing Guide', '30sec', 299)">30s ₹299</button>
+            <button class="p-btn" onclick="orderStyle('Editing Guide', '60sec', 499)">60s ₹499</button>
           </div>
         </div>
       </div>
 
-      <div class="thumb-card">
-        <img class="thumb-img" src="thumb2.jpg" alt="Politics">
-        <div class="thumb-info">
-          <div class="thumb-title">Politics Explainer</div>
-          <div class="style-btns">
-            <button class="style-btn" onclick="orderStyle('Politics Video', '30sec', 399)">30s ₹399</button>
-            <button class="style-btn" onclick="orderStyle('Politics Video', '60sec', 599)">60s ₹599</button>
+      <div class="portfolio-item">
+        <img class="portfolio-img" src="thumb2.jpg" alt="Work 2">
+        <div class="portfolio-info">
+          <div class="portfolio-title">Politics Explainer</div>
+          <div class="portfolio-btns">
+            <button class="p-btn" onclick="orderStyle('Politics Video', '30sec', 399)">30s ₹399</button>
+            <button class="p-btn" onclick="orderStyle('Politics Video', '60sec', 599)">60s ₹599</button>
           </div>
         </div>
       </div>
 
-      <div class="thumb-card">
-        <img class="thumb-img" src="thumb3.jpg" alt="City vs Village">
-        <div class="thumb-info">
-          <div class="thumb-title">City vs Village</div>
-          <div class="style-btns">
-            <button class="style-btn" onclick="orderStyle('Comparison Video', '30sec', 399)">30s ₹399</button>
-            <button class="style-btn" onclick="orderStyle('Comparison Video', '60sec', 599)">60s ₹599</button>
+      <div class="portfolio-item">
+        <img class="portfolio-img" src="thumb3.jpg" alt="Work 3">
+        <div class="portfolio-info">
+          <div class="portfolio-title">City vs Village</div>
+          <div class="portfolio-btns">
+            <button class="p-btn" onclick="orderStyle('Comparison Video', '30sec', 399)">30s ₹399</button>
+            <button class="p-btn" onclick="orderStyle('Comparison Video', '60sec', 599)">60s ₹599</button>
           </div>
         </div>
       </div>
 
-      <div class="thumb-card">
-        <img class="thumb-img" src="thumb4.jpg" alt="Talking Head">
-        <div class="thumb-info">
-          <div class="thumb-title">Talking Head Pro</div>
-          <div class="style-btns">
-            <button class="style-btn" onclick="orderStyle('Talking Head', '30sec', 349)">30s ₹349</button>
-            <button class="style-btn" onclick="orderStyle('Talking Head', '60sec', 549)">60s ₹549</button>
+      <div class="portfolio-item">
+        <img class="portfolio-img" src="thumb4.jpg" alt="Work 4">
+        <div class="portfolio-info">
+          <div class="portfolio-title">Talking Head Pro</div>
+          <div class="portfolio-btns">
+            <button class="p-btn" onclick="orderStyle('Talking Head', '30sec', 349)">30s ₹349</button>
+            <button class="p-btn" onclick="orderStyle('Talking Head', '60sec', 549)">60s ₹549</button>
           </div>
         </div>
       </div>
@@ -426,72 +601,80 @@
   </div>
 
   <footer>
-    © 2026 arsalan.editz | Only 30-60s Content
+    © 2026 arsalan.editz | Premium 30-60s Content Studio
   </footer>
 
 </div>
 
-<a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20want%20reel%20edit" class="sticky-wa">
-  💬 WhatsApp Pe Order Karo
+<a href="https://wa.me/918928822744?text=Hi%20Arsalan,%20I%20want%20to%20book%20a%20slot" class="sticky-wa">
+  💬 WhatsApp Now - 2 Slots Left
 </a>
 
 <script>
-  const bubble = document.getElementById('speechBubble');
-  const messages = [
-    "Hey! 👋 Neeche style choose karo",
-    "Thumbnail pe tap karke order karo 🎬",
-    "30 sec ya 60 sec? Button daba do 😊",
-    "12hr me delivery pakki ✨"
+  // TYPEWRITER EFFECT
+  const texts = [
+    "30-60 Second Viral Reels",
+    "That Get Views + Sales",
+    "12 Hour Fast Delivery"
   ];
-  let msgIndex = 0;
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typingElement = document.getElementById('typingText');
 
-  setTimeout(() => {
-    bubble.classList.add('show');
-    typeWriter(messages[0]);
-  }, 3000);
+  function typeWriter() {
+    const currentText = texts[textIndex];
 
-  setInterval(() => {
-    msgIndex = (msgIndex + 1) % messages.length;
-    bubble.classList.remove('show');
-    setTimeout(() => {
-      bubble.classList.add('show');
-      typeWriter(messages[msgIndex]);
-    }, 400);
-  }, 8000);
+    if (isDeleting) {
+      typingElement.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typingElement.textContent = currentText.substring(0, charIndex + 1);
+      charIndex++;
+    }
 
-  function typeWriter(text) {
-    bubble.textContent = '';
-    let i = 0;
-    const typing = setInterval(() => {
-      if (i < text.length) {
-        bubble.textContent += text.charAt(i);
-        i++;
-      } else {
-        clearInterval(typing);
-      }
-    }, 40);
+    if (!isDeleting && charIndex === currentText.length) {
+      isDeleting = true;
+      setTimeout(typeWriter, 2000);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      textIndex = (textIndex + 1) % texts.length;
+      setTimeout(typeWriter, 500);
+    } else {
+      setTimeout(typeWriter, isDeleting? 50 : 100);
+    }
   }
+  setTimeout(typeWriter, 1000);
 
-  bubble.addEventListener('click', () => {
-    window.open('https://wa.me/918928822744?text=Hi%20Arsalan,%20Mujhe%20reel%20edit%20karani%20hai', '_blank');
+  // COUNT UP ANIMATION
+  const countElements = document.querySelectorAll('.stat-num[data-target]');
+  countElements.forEach(el => {
+    const target = parseInt(el.dataset.target);
+    let count = 0;
+    const increment = target / 50;
+    const updateCount = () => {
+      if (count < target) {
+        count += increment;
+        el.textContent = Math.ceil(count) + (target === 10? 'M+' : '+');
+        setTimeout(updateCount, 30);
+      } else {
+        el.textContent = target + (target === 10? 'M+' : '+');
+      }
+    };
+    setTimeout(updateCount, 1000);
   });
 
-  const names = ['Rohit', 'Priya', 'Aman', 'Sneha', 'Vikash', 'Anjali', 'Rahul'];
-  const packs = ['Basic Pack', 'Pro Pack', 'Comparison Pack', 'Politics Pack'];
-  const liveText = document.getElementById('liveText');
-
-  setInterval(() => {
-    const name = names[Math.floor(Math.random() * names.length)];
-    const pack = packs[Math.floor(Math.random() * packs.length)];
-    const mins = Math.floor(Math.random() * 5) + 1;
-    liveText.textContent = `${name} ne ${pack} order kiya • ${mins} min pehle`;
-  }, 6000);
+  // ORDER FUNCTIONS
+  function orderPack(pack, price) {
+    const msg = `Hi Arsalan, I want to book ${pack} Pack for ₹${price}. Please confirm my slot!`;
+    window.open(`https://wa.me/918928822744?text=${encodeURIComponent(msg)}`, '_blank');
+  }
 
   function orderStyle(style, duration, price) {
-    const msg = `Hi Arsalan, Mujhe ${style} ${duration} wala chahiye ₹${price} me. Jaldi start karo!`;
+    const msg = `Hi Arsalan, I need ${style} ${duration} edit for ₹${price}. Let's start!`;
     window.open(`https://wa.me/918928822744?text=${encodeURIComponent(msg)}`, '_blank');
   }
 </script>
 
 </body>
-    </html>
+  </html>
